@@ -1,28 +1,13 @@
-
 import json
-from abc import ABC, abstractmethod
-
-
-class VacancyRepository(ABC):
-    """Создаем абстрактный класс для реализации методов создания добавления и удаления вакансий """
-    @abstractmethod
-    def add_vacancy(self, vacancy):
-        """Добавить вакансию в файл."""
-        pass
-
-    @abstractmethod
-    def get_vacancies(self, criteria):
-        """Получить вакансии по заданным критериям."""
-        pass
-
-    @abstractmethod
-    def delete_vacancy(self, vacancy_id):
-        """Удалить вакансию по идентификатору."""
-        pass
+from src.working_with_file.working_with_file_base import VacancyRepository
+from src.vacancies import Vacancies
 
 
 class JsonVacancyRepository(VacancyRepository):
-    def __init__(self, file_path):
+    """Класс работы с файлами"""
+    file = "vacancies.json"
+
+    def __init__(self, file_path=file):
         self.file_path = file_path
 
     def _load_data(self):
@@ -35,8 +20,9 @@ class JsonVacancyRepository(VacancyRepository):
 
     def _save_data(self, vacancies):
         """Сохраняет данные в файл."""
-        with open(self.file_path, 'w', encoding='utf-8') as f:
-            json.dump(vacancies, f, ensure_ascii=False, indent=4)
+        with open(self.file_path, 'w+', encoding='utf-8') as f:
+            for v in vacancies:
+                json.dump(vacancies, f, ensure_ascii=False, indent=4)
 
     def add_vacancy(self, vacancy):
         """Добавляем вакансию в файл."""
@@ -49,21 +35,20 @@ class JsonVacancyRepository(VacancyRepository):
         vacancies = self._load_data()
         return [vacancy for vacancy in vacancies if all(item in vacancy.items() for item in criteria.items())]
 
-    def delete_vacancy(self, vacancy_id):
-        """Удаляем вакансию по идентификатору."""
-        vacancies = self._load_data()
-        vacancies = [vacancy for vacancy in vacancies if vacancy.get('id') != vacancy_id]
-        self._save_data(vacancies)
+    def delete_vacancy(self):
+        """Удаляем вакансию """
+        with open(self.file_path, 'w+', encoding='utf-8') as f:
+            pass
 
 
 # Пример использования
 if __name__ == "__main__":
-    repository = JsonVacancyRepository("vacancies.json")
+    repository = JsonVacancyRepository()
 
     # Пример добавления вакансий
     new_vacancy = {
         "id": 1,
-        "title": "Программист Python",
+        "name": "Программист Python",
         "url": "https://example.com/vacancy1",
         "salary": 60000,
         "description": "Разработка приложений на Python."
@@ -74,7 +59,3 @@ if __name__ == "__main__":
     criteria = {"name": "Программист Python"}
     vacancies = repository.get_vacancies(criteria)
     print(vacancies)
-
-    # Пример удаления вакансии
-    repository.delete_vacancy(1)
-    
