@@ -1,6 +1,8 @@
 import json
 from src.working_with_file.working_with_file_base import VacancyRepository
+
 from src.vacancies import Vacancies
+from src.api.api_hh import HHJobAPI
 
 
 class JsonVacancyRepository(VacancyRepository):
@@ -43,6 +45,8 @@ class JsonVacancyRepository(VacancyRepository):
 
 # Пример использования
 if __name__ == "__main__":
+    hh_api = HHJobAPI()
+    hh_api.connect()
     repository = JsonVacancyRepository()
 
     # Пример добавления вакансий

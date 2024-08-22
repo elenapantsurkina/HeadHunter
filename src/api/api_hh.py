@@ -32,6 +32,7 @@ class HHJobAPI(AbstractAPI):
         response = self.__session.get(self.BASE_URL, params=params)
         if response.status_code == 200:
             vacancies = response.json().get('items', [])
+            print(vacancies)
             self.__vacancies.extend(vacancies)
 
         for v in self.__vacancies:
