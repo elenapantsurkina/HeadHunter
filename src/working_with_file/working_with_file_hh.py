@@ -9,8 +9,8 @@ class JsonVacancyRepository(VacancyRepository):
     """Класс работы с файлами"""
     file = "vacancies.json"
 
-    def __init__(self, file_path=file):
-        self.file_path = file_path
+    def __init__(self, __file_path=file):
+        self.file_path = __file_path
 
     def _load_data(self):
         """Считывает данные из файла."""
