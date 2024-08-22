@@ -70,7 +70,7 @@ if __name__ == "__main__":
     hh_api.connect()  # Проверка подключения
 
     # Запрос вакансий
-    vacancies_new = hh_api.get_vacancies("Python")  # Поиск по всей России
+    vacancies_new = hh_api.get_vacancies("Backend-разработчик")  # Поиск по всей России
     for v in vacancies_new:
         print(v)
 
