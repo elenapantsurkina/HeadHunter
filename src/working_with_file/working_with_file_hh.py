@@ -1,6 +1,5 @@
 import json
 from src.working_with_file.working_with_file_base import VacancyRepository
-
 from src.vacancies import Vacancies
 from src.api.api_hh import HHJobAPI
 
@@ -20,7 +19,7 @@ class JsonVacancyRepository(VacancyRepository):
         except (FileNotFoundError, json.JSONDecodeError):
             return []
 
-    def _save_data(self, vacancies):
+    def save_data(self, vacancies):
         """Сохраняет данные в файл."""
         with open(self.file_path, 'w+', encoding='utf-8') as f:
             for v in vacancies:
@@ -30,7 +29,7 @@ class JsonVacancyRepository(VacancyRepository):
         """Добавляем вакансию в файл."""
         vacancies = self._load_data()
         vacancies.append(vacancy)
-        self._save_data(vacancies)
+        self.save_data(vacancies)
 
     def get_vacancies(self, criteria):
         """Получаем вакансии по заданным критериям."""
