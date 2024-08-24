@@ -1,0 +1,31 @@
+[
+    {
+        "id": 1,
+        "name": "Программист Python",
+        "url": "https://example.com/vacancy1",
+        "salary": 60000,
+        "description": "Разработка приложений на Python."
+    },
+    {
+        "id": 1,
+        "name": "Программист Python",
+        "url": "https://example.com/vacancy1",
+        "salary": 60000,
+        "description": "Разработка приложений на Python."
+    }
+][
+    {
+        "id": 1,
+        "name": "Программист Python",
+        "url": "https://example.com/vacancy1",
+        "salary": 60000,
+        "description": "Разработка приложений на Python."
+    },
+    {
+        "id": 1,
+        "name": "Программист Python",
+        "url": "https://example.com/vacancy1",
+        "salary": 60000,
+        "description": "Разработка приложений на Python."
+    }
+]
