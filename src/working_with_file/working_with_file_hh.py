@@ -2,12 +2,12 @@ import json
 from src.working_with_file.working_with_file_base import VacancyRepository
 from src.vacancies import Vacancies
 from src.api.api_hh import HHJobAPI
-from src.config import normalized_path
+from src.config import PATH_TO_FILE
 
 
 class JsonVacancyRepository(VacancyRepository):
     """Класс работы с файлами"""
-    file = normalized_path
+    file = PATH_TO_FILE
 
     def __init__(self, __file_path=file):
         self.file_path = __file_path
@@ -16,15 +16,16 @@ class JsonVacancyRepository(VacancyRepository):
         """Считывает данные из файла."""
         try:
             with open(self.file_path, 'r', encoding='utf-8') as f:
-                return json.load(f)
+                vacancies = json.load(f)
+                return vacancies
         except (FileNotFoundError, json.JSONDecodeError):
             return []
 
     def save_data(self, vacancies):
         """Сохраняет данные в файл."""
         with open(self.file_path, 'w+', encoding='utf-8') as f:
-            for v in vacancies:
-                json.dump(vacancies, f, ensure_ascii=False, indent=4)
+
+            json.dump(vacancies, f, ensure_ascii=False, indent=4)
 
     def add_vacancy(self, vacancy):
         """Добавляем вакансию в файл."""

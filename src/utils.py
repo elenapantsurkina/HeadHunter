@@ -1,7 +1,7 @@
 
 def top_vacancies(vacancies, top_n):
     """Функция выводящая топ вакансий"""
-    vacancies_top = sorted(vacancies, key=lambda x: x['salary'] if x['salary'] else 0, reverse=True)[:top_n]
+    vacancies_top = sorted(vacancies, key=lambda x: x.salary, reverse=True)[:top_n]
     return vacancies_top
 
 
@@ -27,11 +27,11 @@ def display_vacancies(vacancies):
         return
 
     for idx, vacancy in enumerate(vacancies, start=1):
-        print(f"{idx}. {vacancy['name']}")
-        print(f"   URL: {vacancy['alternate_url']}")
-        salary = vacancy['salary']
+        print(f"{idx}. {vacancy.name}")
+        print(f"   URL: {vacancy.url}")
+        salary = vacancy.salary
         if salary:
-            print(f"   Зарплата: от {salary['from']} до {salary['to']} {salary['currency']}")
+            print(f"   Зарплата: от {salary} до {salary} {salary}")
         else:
             print("   Зарплата не указана")
-        print(f"   Описание: {vacancy['snippet']['requirement']}\n")
+        print(f"   Описание: {vacancy.description}\n")
