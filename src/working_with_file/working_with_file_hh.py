@@ -2,11 +2,12 @@ import json
 from src.working_with_file.working_with_file_base import VacancyRepository
 from src.vacancies import Vacancies
 from src.api.api_hh import HHJobAPI
+from src.config import normalized_path
 
 
 class JsonVacancyRepository(VacancyRepository):
     """Класс работы с файлами"""
-    file = "vacancies.json"
+    file = normalized_path
 
     def __init__(self, __file_path=file):
         self.file_path = __file_path

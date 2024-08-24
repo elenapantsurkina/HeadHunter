@@ -1,4 +1,5 @@
 from src.utils import top_vacancies, filter_keyword, filter_salary, display_vacancies
+
 from src.api.api_hh import HHJobAPI
 
 
