@@ -31,7 +31,7 @@ def display_vacancies(vacancies_top):
         print(f"   URL: {vacancy.url}")
         salary = vacancy.salary
         if salary:
-            print(f"   Зарплата: от {salary} до {salary}")
+            print(f"   Нижний порог зарплаты : {salary}")
         else:
             print("   Зарплата не указана")
         print(f"   Описание: {vacancy.description}\n")

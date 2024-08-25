@@ -28,13 +28,13 @@ class Vacancies:
         elif not isinstance(self.salary, (int, float, str)):
             raise ValueError("Зарплата должна быть числом или строкой 'Зарплата не указана'.")
 
-    def __eq__(self, other):
+    def __eq__(self, other:object) -> bool:
         """Сравнение вакансий по зарплате равно"""
         if not isinstance(other, Vacancies):
             return NotImplemented
         return self.salary == other.salary
 
-    def __lt__(self, other):
+    def __lt__(self, other:object) -> bool:
         """Сравнение вакансий по зарплате меньше"""
         if not isinstance(other, Vacancies):
             return NotImplemented

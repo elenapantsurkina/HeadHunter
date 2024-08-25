@@ -3,7 +3,7 @@ from src.utils import top_vacancies, filter_keyword, filter_salary, display_vaca
 from src.api.api_hh import HHJobAPI
 
 
-def user_interaction():
+def user_interaction() -> None:
     hh_api = HHJobAPI()
     hh_api.connect()
 
@@ -18,20 +18,21 @@ def user_interaction():
 
         keyword = input("Введите ключевое слово для поиска в описании (или пропустите, нажав Enter): ")
 
-        salary = input("Введите диапазон зарплат: ")
-
+        salary = input("Введите нижний порог зарплаты: ")
 
         vacancies = hh_api.get_vacancies(query)
         print(vacancies)
 
-        vacancies_keyword = filter_keyword(vacancies, keyword)
-        print(vacancies_keyword)
+        # vacancies_keyword = filter_keyword(vacancies, keyword)
+        # print(vacancies_keyword)
+        #
+        # vacancies_salary = filter_salary(vacancies_keyword, salary)
+        # print(vacancies_salary)
+        #
+        # vacancies_top = top_vacancies(vacancies_salary, top_n)
+        # print(vacancies_top)
 
-        vacancies_salary = filter_salary(vacancies_keyword, salary)
-        print(vacancies_salary)
-
-        vacancies_top = top_vacancies(vacancies_salary, top_n)
-        print(vacancies_top)
+        vacancies_top = top_vacancies(vacancies, top_n)
 
         result = display_vacancies(vacancies_top)
 
