@@ -31,7 +31,7 @@ def user_interaction() -> None:
         #
         # vacancies_top = top_vacancies(vacancies_salary, top_n)
         # print(vacancies_top)
-
+# я хотела чтобы выполнялось в очередности как закомичено, но это выдает пустые списки.
         vacancies_top = top_vacancies(vacancies, top_n)
 
         result = display_vacancies(vacancies_top)
