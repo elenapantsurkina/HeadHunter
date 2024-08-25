@@ -7,7 +7,6 @@ def user_interaction():
     hh_api = HHJobAPI()
     hh_api.connect()
 
-    #platforms = ["HHJobAPI"]
     print("Добро пожаловать в систему поиска вакансий!")
     while True:
         query = input("Введите поисковый запрос (или 'exit' для выхода): ")
@@ -21,17 +20,22 @@ def user_interaction():
 
         salary = input("Введите диапазон зарплат: ")
 
-        vacancies = hh_api.get_vacancies(keyword)
 
-        #vacancies_keyword = filter_keyword(vacancies, keyword)
+        vacancies = hh_api.get_vacancies(query)
+        print(vacancies)
 
-        #vacancies_salary = filter_salary(vacancies_keyword, salary)
+        vacancies_keyword = filter_keyword(vacancies, keyword)
+        print(vacancies_keyword)
 
-        vacancies_top = top_vacancies(vacancies, top_n)
+        vacancies_salary = filter_salary(vacancies_keyword, salary)
+        print(vacancies_salary)
+
+        vacancies_top = top_vacancies(vacancies_salary, top_n)
+        print(vacancies_top)
 
         result = display_vacancies(vacancies_top)
 
-        return vacancies
+        return result
 
 
 if __name__ == '__main__':
