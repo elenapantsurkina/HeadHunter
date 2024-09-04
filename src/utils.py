@@ -1,4 +1,4 @@
-
+from src.vacancies import Vacancies
 def top_vacancies(vacancies_salary, top_n):
     """Функция выводящая топ вакансий"""
     vacancies_top = sorted(vacancies_salary, key=lambda x: x.salary, reverse=True)[:top_n]
@@ -13,6 +13,7 @@ def filter_keyword(vacancies, keyword):
         ]
         return vacancies_keyword
     return vacancies
+
 
 
 def filter_salary(vacancies_keyword, salary):
