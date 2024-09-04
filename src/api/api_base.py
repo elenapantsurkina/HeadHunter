@@ -8,7 +8,7 @@ class AbstractAPI(ABC):
         pass
 
     @abstractmethod
-    def get_vacancies(self, query, area=None, page=0):
+    def get_vacancies(self, query: str, area=None, page=0):
         """Получение вакансий по запросу.
 
         :param query: Запрос для поиска вакансий.

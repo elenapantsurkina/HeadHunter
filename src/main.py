@@ -16,23 +16,21 @@ def user_interaction() -> None:
         top_n = input("Введите количество вакансий для вывода в топ N (0 для пропуска): ")
         top_n = int(top_n) if top_n.isdigit() else None
 
-        keyword = input("Введите ключевое слово для поиска в описании (или пропустите, нажав Enter): ")
+        keyword = input("Введите ключевое слово для поиска в описании (или пропустите, нажав Enter): ").split()
 
         salary = input("Введите нижний порог зарплаты: ")
 
         vacancies = hh_api.get_vacancies(query)
         print(vacancies)
 
-        # vacancies_keyword = filter_keyword(vacancies, keyword)
-        # print(vacancies_keyword)
-        #
-        # vacancies_salary = filter_salary(vacancies_keyword, salary)
-        # print(vacancies_salary)
-        #
-        # vacancies_top = top_vacancies(vacancies_salary, top_n)
-        # print(vacancies_top)
-# я хотела чтобы выполнялось в очередности как закомичено, но это выдает пустые списки.
-        vacancies_top = top_vacancies(vacancies, top_n)
+        vacancies_keyword = filter_keyword(vacancies, keyword)
+        print(vacancies_keyword)
+
+        vacancies_salary = filter_salary(vacancies_keyword, salary)
+        print(vacancies_salary)
+
+        vacancies_top = top_vacancies(vacancies_salary, top_n)
+        print(vacancies_top)
 
         result = display_vacancies(vacancies_top)
 

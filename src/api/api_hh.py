@@ -27,7 +27,7 @@ class HHJobAPI(AbstractAPI):
         """Метод публичный обращается к приватному методу"""
         self.__connect()
 
-    def get_vacancies(self, query, area=None, page=20):
+    def get_vacancies(self, query: str, area=None, page=20):
         """Получение списка вакансий по заданному запросу."""
         params = {
             'text': query,
@@ -70,7 +70,6 @@ class HHJobAPI(AbstractAPI):
 if __name__ == "__main__":
     hh_api = HHJobAPI()
     hh_api.connect()  # Проверка подключения
-
 
     # Запрос вакансий
     vacancies_new = hh_api.get_vacancies("Backend-разработчик")  # Поиск по всей России
