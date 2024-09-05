@@ -21,7 +21,7 @@ def filter_keyword(vacancies, keywords):
 def filter_salary(vacancies_keyword, salary):
     vacancies_salary = []
     for v in vacancies_keyword:
-        if int(salary) >= v.salary:
+        if int(salary) <= v.salary:
             vacancies_salary.append(v)
     return vacancies_salary
 
