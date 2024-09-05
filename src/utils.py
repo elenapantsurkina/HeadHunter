@@ -5,11 +5,11 @@ def top_vacancies(vacancies_salary, top_n):
     return vacancies_top
 
 
-def filter_keyword(vacancies, keyword):
-    if isinstance(keyword, list) and keyword:
+def filter_keyword(vacancies, keywords):
+    if isinstance(keywords, list) and keywords:
         vacancies_keyword = [
             vacancy for vacancy in vacancies
-            if all(word in vacancy.description.lower().split() for word in keyword)
+            if all(word.lower() in vacancy.description.lower() for word in keywords)
         ]
         return vacancies_keyword
     return vacancies
