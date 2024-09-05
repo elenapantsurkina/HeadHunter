@@ -1,6 +1,8 @@
-from src.utils import top_vacancies, filter_keyword, filter_salary, display_vacancies
+from src.utils import top_vacancies, filter_keyword, filter_salary, display_vacancies, save_filtered_vacancies
 
+from src.working_with_file.working_with_file_hh import JsonVacancyRepository
 from src.api.api_hh import HHJobAPI
+from src.config import PATH_TO_FILE
 
 
 def user_interaction() -> None:
@@ -33,6 +35,10 @@ def user_interaction() -> None:
         print(vacancies_top)
 
         result = display_vacancies(vacancies_top)
+
+        file_path = PATH_TO_FILE
+        repository = JsonVacancyRepository(file_path)
+        save_filtered_vacancies(vacancies_top, repository)
 
         return result
 

@@ -1,4 +1,7 @@
 from src.vacancies import Vacancies
+import os
+
+
 def top_vacancies(vacancies_salary, top_n):
     """Функция выводящая топ вакансий"""
     vacancies_top = sorted(vacancies_salary, key=lambda x: x.salary, reverse=True)[:top_n]
@@ -13,7 +16,6 @@ def filter_keyword(vacancies, keywords):
         ]
         return vacancies_keyword
     return vacancies
-
 
 
 def filter_salary(vacancies_keyword, salary):
@@ -39,3 +41,13 @@ def display_vacancies(vacancies_top):
         else:
             print("   Зарплата не указана")
         print(f"   Описание: {vacancy.description}\n")
+
+
+def save_filtered_vacancies(vacancies_top, repository):
+    """Сохраняет отфильтрованные вакансии в файл JSON."""
+    if not vacancies_top:
+        print("Нет вакансий для сохранения.")
+        return
+    os.makedirs(os.path.dirname(repository.file_path), exist_ok=True)
+    # Сохраняем вакансии, преобразуя их в словари
+    repository.save_data([vacancy.__dict__ for vacancy in vacancies_top])
