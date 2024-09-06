@@ -1,7 +1,7 @@
 
 class Vacancies:
     """Класс для работы с вакансиями"""
-    def __init__(self, name, salary, description, url):
+    def __init__(self, name: str, salary: int, description: str, url: str):
         self.name = name
         self.salary = salary if salary is not None else "Зарплата не указана"
         self.description = description
@@ -28,13 +28,13 @@ class Vacancies:
         elif not isinstance(self.salary, (int, float, str)):
             raise ValueError("Зарплата должна быть числом или строкой 'Зарплата не указана'.")
 
-    def __eq__(self, other:object) -> bool:
+    def __eq__(self, other: object) -> bool:
         """Сравнение вакансий по зарплате равно"""
         if not isinstance(other, Vacancies):
             return NotImplemented
         return self.salary == other.salary
 
-    def __lt__(self, other:object) -> bool:
+    def __lt__(self, other: object) -> bool:
         """Сравнение вакансий по зарплате меньше"""
         if not isinstance(other, Vacancies):
             return NotImplemented

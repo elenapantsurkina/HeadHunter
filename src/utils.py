@@ -1,14 +1,15 @@
 from src.vacancies import Vacancies
 import os
+from typing import Any
 
 
-def top_vacancies(vacancies_salary, top_n):
+def top_vacancies(vacancies_salary: Any, top_n: Any):
     """Функция выводящая топ вакансий"""
     vacancies_top = sorted(vacancies_salary, key=lambda x: x.salary, reverse=True)[:top_n]
     return vacancies_top
 
 
-def filter_keyword(vacancies, keywords):
+def filter_keyword(vacancies: Any, keywords: Any):
     if isinstance(keywords, list) and keywords:
         vacancies_keyword = [
             vacancy for vacancy in vacancies
@@ -18,7 +19,7 @@ def filter_keyword(vacancies, keywords):
     return vacancies
 
 
-def filter_salary(vacancies_keyword, salary):
+def filter_salary(vacancies_keyword: Any, salary: Any):
     vacancies_salary = []
     for v in vacancies_keyword:
         if int(salary) <= v.salary:
@@ -26,7 +27,7 @@ def filter_salary(vacancies_keyword, salary):
     return vacancies_salary
 
 
-def display_vacancies(vacancies_top):
+def display_vacancies(vacancies_top: Any):
     """Отображает информацию о вакансиях для пользователя"""
     if not vacancies_top:
         print("Вакансии не найдены.")
@@ -43,7 +44,7 @@ def display_vacancies(vacancies_top):
         print(f"   Описание: {vacancy.description}\n")
 
 
-def save_filtered_vacancies(vacancies_top, repository):
+def save_filtered_vacancies(vacancies_top: Any, repository):
     """Сохраняет отфильтрованные вакансии в файл JSON."""
     if not vacancies_top:
         print("Нет вакансий для сохранения.")

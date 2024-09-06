@@ -26,13 +26,10 @@ def user_interaction() -> None:
         print(vacancies)
 
         vacancies_keyword = filter_keyword(vacancies, keyword)
-        print(vacancies_keyword)
 
         vacancies_salary = filter_salary(vacancies_keyword, salary)
-        print(vacancies_salary)
 
         vacancies_top = top_vacancies(vacancies_salary, top_n)
-        print(vacancies_top)
 
         result = display_vacancies(vacancies_top)
 

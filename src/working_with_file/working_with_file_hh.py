@@ -1,5 +1,6 @@
 import json
 from src.working_with_file.working_with_file_base import VacancyRepository
+from typing import Any
 from src.vacancies import Vacancies
 from src.api.api_hh import HHJobAPI
 from src.config import PATH_TO_FILE
@@ -21,13 +22,13 @@ class JsonVacancyRepository(VacancyRepository):
         except (FileNotFoundError, json.JSONDecodeError):
             return []
 
-    def save_data(self, vacancies):
+    def save_data(self, vacancies: Any):
         """Сохраняет данные в файл."""
         with open(self.file_path, 'w+', encoding='utf-8') as f:
 
             json.dump(vacancies, f, ensure_ascii=False, indent=4)
 
-    def add_vacancy(self, vacancy):
+    def add_vacancy(self, vacancy: Vacancies):
         """Добавляем вакансию в файл."""
         vacancies = self._load_data()
         vacancies.append(vacancy)
@@ -51,16 +52,16 @@ if __name__ == "__main__":
     repository = JsonVacancyRepository()
 
     # Пример добавления вакансий
-    new_vacancy = {
-        "id": 1,
-        "name": "Программист Python",
-        "url": "https://example.com/vacancy1",
-        "salary": 60000,
-        "description": "Разработка приложений на Python."
-    }
-    repository.add_vacancy(new_vacancy)
+    # new_vacancy = {
+    #     "id": 1,
+    #     "name": "Программист Python",
+    #     "url": "https://example.com/vacancy1",
+    #     "salary": 60000,
+    #     "description": "Разработка приложений на Python."
+    # }
+    # repository.add_vacancy(new_vacancy)
 
     # Пример получения вакансий
-    criteria = {"name": "Программист Python"}
-    vacancies = repository.get_vacancies(criteria)
-    print(vacancies)
+    # criteria = {"name": "Программист Python"}
+    # vacancies = repository.get_vacancies(criteria)
+    # print(vacancies)
