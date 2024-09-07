@@ -1,5 +1,6 @@
 
 from abc import ABC, abstractmethod
+
 from src.vacancies import Vacancies
 
 

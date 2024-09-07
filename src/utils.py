@@ -1,6 +1,7 @@
-from src.vacancies import Vacancies
 import os
 from typing import Any
+
+from src.vacancies import Vacancies
 
 
 def top_vacancies(vacancies_salary: Any, top_n: Any):

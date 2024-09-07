@@ -1,9 +1,10 @@
 import json
-from src.working_with_file.working_with_file_base import VacancyRepository
 from typing import Any
-from src.vacancies import Vacancies
+
 from src.api.api_hh import HHJobAPI
 from src.config import PATH_TO_FILE
+from src.vacancies import Vacancies
+from src.working_with_file.working_with_file_base import VacancyRepository
 
 
 class JsonVacancyRepository(VacancyRepository):

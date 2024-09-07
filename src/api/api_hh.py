@@ -1,5 +1,6 @@
-from src.api.api_base import AbstractAPI
 import requests
+
+from src.api.api_base import AbstractAPI
 from src.vacancies import Vacancies
 
 

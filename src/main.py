@@ -1,8 +1,8 @@
-from src.utils import top_vacancies, filter_keyword, filter_salary, display_vacancies, save_filtered_vacancies
-
-from src.working_with_file.working_with_file_hh import JsonVacancyRepository
 from src.api.api_hh import HHJobAPI
 from src.config import PATH_TO_FILE
+from src.utils import (display_vacancies, filter_keyword, filter_salary,
+                       save_filtered_vacancies, top_vacancies)
+from src.working_with_file.working_with_file_hh import JsonVacancyRepository
 
 
 def user_interaction() -> None:
