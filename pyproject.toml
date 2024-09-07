@@ -16,7 +16,7 @@ flake8 = "^7.1.1"
 mypy = "^1.11.1"
 black = "^24.8.0"
 isort = "^5.13.2"
-
+[oot
 
 [tool.poetry.group.dev.dependencies]
 pytest-cov = "^5.0.0"
